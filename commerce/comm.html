@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="comm.css">
+</head>
+<body>
+    <header>
+        <div class="logo">Timeless Watches</div>
+        <div class="search-bar">
+            <input type="text" placeholder="search...">
+            <button>🔍</button>
+
+        </div>
+        <nav>
+            <ul>
+                <li><a href="#">Shop</a></li>
+                <li><a href="#">New arrival</a></li>
+                <li><a href="#">Brand</a></li>
+                <li><a href="#">About</a></li>
+                <li><a href="#">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+    <div class="product-container">
+        <div class="photo-gallery">
+            <img id="main-img" src="https://m.media-amazon.com/images/I/719Hxks8QEL.jpg" alt="watchimg">
+            <div class="thumb">
+                
+                <img onclick="changeimg('')" src="https://encrypted-tbn3.gstatic.com/shopping?q=tbn:ANd9GcRtRSFX3bCaCp61wb8FE-mXAFJznP7xvSzNy_Gi8LdWcw3OhpGz7s1QLU6E7L4x0cFHnJhY01R5JBjsXhP6BN1LJHXl9Jnizor_-25RGYaFjUgSqwq9t2Pp7Zw" alt="watchimg">
+                <img onclick="changeimg('')" src="https://encrypted-tbn2.gstatic.com/shopping?q=tbn:ANd9GcTpaKjZ3hbA7aTfHspz9r1aGgMUYo05Se6fxe90YbN_s5T-qUnCnIUL82lIktvgk3KdkUi-AN-jQ9HJSry4D_kCa0deU4oZvFuhId59QtJRWAdSz0GstuznoAY" alt="watchimg">
+                <img onclick="changeimg('')" src="https://encrypted-tbn3.gstatic.com/shopping?q=tbn:ANd9GcRNF-atMbDETLnsey1grsvPCrG7FIMY-hQvBAbCmx14VgFqem_ruWd6lF9l77Nk1nVM3CwkgbyJAJn5H2L7FbrTbMbNMcPunXYvYSMmN1rFgEYOathvuZB95A" alt="watchimg">
+                <img  onclick="changeimg('')" src="https://encrypted-tbn2.gstatic.com/shopping?q=tbn:ANd9GcTu5aTEm1PzjACwLQI8zusVVKeQobwKqOC3YiN9FVp6rZiLpK3UpsjZQYO5T8_vWN0LE6_O9fB7pLTd1pzdHoNfztIkyYJt1ADxafk_IwSNdmcerFNC2y8b" alt="watchimg">
+                
+            </div>
+        </div>
+        <div class="product-content">
+            <h1>Elegant Luxury Watch</h1>
+            <p class="brand">PRESTIGE TIME CO.</p>
+            <p class="price">
+                <span class="current-price">$499.99</span>
+                <span class="old-price">$799.99</span>
+                <span class="discount">38% OFF</span>
+            </p>
+            <p class="description">
+                This luxurious timepiece combines elegance with precision craftsmanship. Perfect for formal occasions or everyday wear, it features premium materials and impeccable design.
+            </p>
+            <div class="ratings">
+                <span class="star">⭐</span>
+                <span class="star">⭐</span>
+                <span class="star">⭐</span>
+                <span class="star">⭐</span>
+                <span class="star">⭐</span>
+                <p>Rated 4.8/5 (256 reviews)</p>
+            </div>
+            <div class="quantity-selector">
+                <button onclick="decreaseQuantity()">-</button>
+                <input type="number" name="num" id="quantity" min="1" value="1">
+                <button onclick="increaseQuantity()">+</button>
+            </div>
+            <button class="add-to-cart">Add to bag</button>
+                <div class="promotion">
+                    <h3>Limited-Time Offer!</h3>
+                <p>Get an additional 10% off your first purchase when you sign up for our newsletter.</p>
+                <button class="promo-btn">Sign Up Now</button>
+                </div>
+
+        </div>
+    </div>
+     <footer>
+        <p>&copy; 2024 Timeless Watches. Crafted for Excellence.</p>
+    </footer>
+    <script src="comm.js" ></script>
+</body>
+</html>
