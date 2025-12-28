@@ -1,65 +1,65 @@
-const form = document.getElementById('form')
-const input = document.getElementById('input')
-const todosUL = document.getElementById('todos')
+const formEl = document.querySelector(".form");
 
-const todos = JSON.parse(localStorage.getItem('todos'))
+const inputEl = document.querySelector(".input");
 
-if(todos) {
-    todos.forEach(todo => addTodo(todo))
+const ulEl = document.querySelector(".list");
+
+let list = JSON.parse(localStorage.getItem("list"));
+if (list) {
+  list.forEach((task) => {
+    toDoList(task);
+  });
 }
 
-form.addEventListener('submit', (e) => {
-    e.preventDefault()
+formEl.addEventListener("submit", (event) => {
+  event.preventDefault();
+  toDoList();
+});
 
-    addTodo()
-})
+function toDoList(task) {
+  let newTask = inputEl.value;
+  if (task) {
+    newTask = task.name;
+  }
 
-function addTodo(todo) {
-    let todoText = input.value
+  const liEl = document.createElement("li");
+  if (task && task.checked) {
+    liEl.classList.add("checked");
+  }
+  liEl.innerText = newTask;
+  ulEl.appendChild(liEl);
+  inputEl.value = "";
+  const checkBtnEl = document.createElement("div");
+  checkBtnEl.innerHTML = `
+  <i class="fas fa-check-square">
+  `;
+  liEl.appendChild(checkBtnEl);
+  const trashBtnEl = document.createElement("div");
+  trashBtnEl.innerHTML = `
+  <i class="fas fa-trash"></i>
+  `;
+  liEl.appendChild(trashBtnEl);
 
-    if(todo) {
-        todoText = todo.text
-    }
+  checkBtnEl.addEventListener("click", () => {
+    liEl.classList.toggle("checked");
+    updateLocalStorage();
+  });
 
-    if(todoText) {
-        const todoEl = document.createElement('li')
-        if(todo && todo.completed) {
-            todoEl.classList.add('completed')
-        }
-
-        todoEl.innerText = todoText
-
-        todoEl.addEventListener('click', () => {
-            todoEl.classList.toggle('completed')
-            updateLS()
-        }) 
-
-        todoEl.addEventListener('contextmenu', (e) => {
-            e.preventDefault()
-
-            todoEl.remove()
-            updateLS()
-        }) 
-
-        todosUL.appendChild(todoEl)
-
-        input.value = ''
-
-        updateLS()
-    }
+  trashBtnEl.addEventListener("click", () => {
+    liEl.remove();
+    updateLocalStorage();
+  });
+  updateLocalStorage();
 }
 
-function updateLS() {
-    todosEl = document.querySelectorAll('li')
-
-    const todos = []
-
-    todosEl.forEach(todoEl => {
-        todos.push({
-            text: todoEl.innerText,
-            completed: todoEl.classList.contains('completed')
-        })
-    })
-
-    localStorage.setItem('todos', JSON.stringify(todos))
+function updateLocalStorage() {
+  const liEls = document.querySelectorAll("li");
+  list = [];
+  liEls.forEach((liEl) => {
+    list.push({
+      name: liEl.innerText,
+      checked: liEl.classList.contains("checked"),
+    });
+  });
+  localStorage.setItem("list", JSON.stringify(list));
 }
